@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Used to test when active
         // print("didFinishLaunchingWithOptions")
         
-        // Returns the path the current data is saved into the device
-        // print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         
         return true
         

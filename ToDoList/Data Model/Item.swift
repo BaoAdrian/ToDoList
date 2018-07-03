@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Item {
+// Conforms to protocols set by Encodable
+class Item: Codable /* Codable replaces Encodable & Decodable */ {
     
     // Item Attributes
     var title: String = ""

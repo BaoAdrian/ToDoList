@@ -13,42 +13,31 @@ import UIKit
 // Inheriting UITableViewController takes care of delegate and data source responsibilities
 class TodoListViewController: UITableViewController {
     
-    
-    // Replaced hardcoded array with new Data Model -> Item Objects
-    // var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgon"]
     var itemArray = [Item]()
     
+    // Create fi	le path to documents folder
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     // An interface to the user’s defaults database, where you store key-value pairs persistently across launches of your app
-    let defaults = UserDefaults.standard
+    // let defaults = UserDefaults.standard
     
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        let newItem = Item()
-        newItem.title = "Find Mike"
-        itemArray.append(newItem)
         
-        let newItem2 = Item()
-        newItem2.title = "Buy Eggos"
-        itemArray.append(newItem2)
-        
-        let newItem3 = Item()
-        newItem3.title = "Destroy Demogorgon"
-        itemArray.append(newItem3)
-        
-       
+        // Data path used to test current status before/after modifications
+        // print(dataFilePath)
         
         
         
-        // Checks if items are stored using the defaults is correct, loads the View with current data from defaults
-        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
-
-            itemArray = items
-
-        }
+        
+        loadItems()
+        
+        
+        
         
     }
     
@@ -101,8 +90,7 @@ class TodoListViewController: UITableViewController {
         // Check to see if items have been 'checked' or DONE, if not, implements the opposite of current status
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         
-        // Updates tableView with respective checkmarks
-        tableView.reloadData()
+        saveItems()
         
         // Adds flash animation to any selected cells
         tableView.deselectRow(at: indexPath, animated: true)
@@ -128,11 +116,7 @@ class TodoListViewController: UITableViewController {
             newItem.title = textField.text!
             self.itemArray.append(newItem)
             
-            // Save updated itemArray to UserDefaults
-            self.defaults.set(self.itemArray, forKey: "ToDoListArray")
-            
-            // Once item is added, tableView is reloaded to include
-            self.tableView.reloadData()
+            self.saveItems()
             
             // print("Success, Add Item Pressed")
             // print(textField.text)
@@ -150,6 +134,45 @@ class TodoListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
         
     }
+    
+    
+    // Methods that saves and updates/reloads the current status of each item in list (i.e. title and done)
+    func saveItems() {
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        } catch {
+            // Error
+            print("Error encoding item array, \(error)")
+        }
+        
+        // Once item is added, tableView is reloaded to include
+        tableView.reloadData()
+        
+    }
+    
+    
+    // Method to access and load saved data
+    func loadItems() {
+        
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            
+            let decoder = PropertyListDecoder()
+            
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                // Error
+                print("Error decoding item array, \(error)")
+            }
+            
+        }
+        
+    }
+    
     
 
 }
