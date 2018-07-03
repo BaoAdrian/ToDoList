@@ -8,10 +8,15 @@
 
 import UIKit
 
+
+
 // Inheriting UITableViewController takes care of delegate and data source responsibilities
 class TodoListViewController: UITableViewController {
-
-    var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgon"]
+    
+    
+    // Replaced hardcoded array with new Data Model -> Item Objects
+    // var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgon"]
+    var itemArray = [Item]()
     
     
     // An interface to the user’s defaults database, where you store key-value pairs persistently across launches of your app
@@ -22,15 +27,37 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let newItem = Item()
+        newItem.title = "Find Mike"
+        itemArray.append(newItem)
+        
+        let newItem2 = Item()
+        newItem2.title = "Buy Eggos"
+        itemArray.append(newItem2)
+        
+        let newItem3 = Item()
+        newItem3.title = "Destroy Demogorgon"
+        itemArray.append(newItem3)
+        
+       
+        
+        
+        
         // Checks if items are stored using the defaults is correct, loads the View with current data from defaults
-        if let items = defaults.array(forKey: "ToDoListArray") as? [String] {
-            
+        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
+
             itemArray = items
-            
+
         }
         
     }
+    
+    
+    
 
+    
+    
+    
     
     //MARK: TableView Datasource Methods
     
@@ -38,15 +65,29 @@ class TodoListViewController: UITableViewController {
         return itemArray.count
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row]
+        // Set constant to simplify code
+        let item = itemArray[indexPath.row]
+        
+        cell.textLabel?.text = item.title
+        
+        // Ternary Operator (replaces if-else statement): value = condition ? valueIfTrue : valueIfFalse
+        cell.accessoryType = item.done == true ? .checkmark : .none
         
         return cell
         
     }
+    
+    
+    
+    
+    
+    
     
     
     //MARK: TableView Delegate Methods
@@ -54,19 +95,18 @@ class TodoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Test
-        print(itemArray[indexPath.row])
+        // print(itemArray[indexPath.row])
+        
+        
+        // Check to see if items have been 'checked' or DONE, if not, implements the opposite of current status
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
+        // Updates tableView with respective checkmarks
+        tableView.reloadData()
         
         // Adds flash animation to any selected cells
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // Use accessory (from attributes tab) to add/ remove checkmark when cell is selected/ deselected
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            // Currently 'check marked' -> Remove checkmark
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        } else {
-            // Not currently 'check marked' -> Add checkmark
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }
         
     }
     
@@ -84,7 +124,9 @@ class TodoListViewController: UITableViewController {
             /* What happens when user clicks add button */
             
             // Add text to array
-            self.itemArray.append(textField.text!)
+            let newItem = Item()
+            newItem.title = textField.text!
+            self.itemArray.append(newItem)
             
             // Save updated itemArray to UserDefaults
             self.defaults.set(self.itemArray, forKey: "ToDoListArray")
