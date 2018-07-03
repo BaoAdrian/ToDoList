@@ -11,7 +11,7 @@ import UIKit
 // Inheriting UITableViewController takes care of delegate and data source responsibilities
 class TodoListViewController: UITableViewController {
 
-    let itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgon"]
+    var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgon"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,42 @@ class TodoListViewController: UITableViewController {
         
     }
     
-
+    
+    //MARK: Add new items
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            
+            /* What happens when user clicks add button */
+            
+            // Add text to array
+            self.itemArray.append(textField.text!)
+            
+            // Once item is added, tableView is reloaded to include
+            self.tableView.reloadData()
+            
+            // print("Success, Add Item Pressed")
+            // print(textField.text)
+        }
+        
+        // Creates mini pop up window (alert) to request user to enter a new item
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create New Item"
+            
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 
 }
 
