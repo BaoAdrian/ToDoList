@@ -40,20 +40,20 @@ Framework to provide the user with an elegant user interface.
 </br>
 
 <p>
-  <img src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />  
+  <img align = "right" src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />  
 </p>
 
 </br>
 
 <p>
-  <img src = "Images/items_checked.png" width = "275" height = "450" hspace = "20"  alt = "Items Page - Checked" />
+  <img align = "right" src = "Images/items_checked.png" width = "275" height = "450" hspace = "20"  alt = "Items Page - Checked" />
 </p>
 
 
 </br>
 
 <p> 
-  <img src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Unchecked" />
+  <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Unchecked" />
 </p>
 
 
