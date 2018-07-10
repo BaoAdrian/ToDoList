@@ -30,13 +30,12 @@ Framework to provide the user with an elegant user interface.
 
 <h2> Homescreen </h2>
 <p>
-  <h3> Current Functionality </h3>
+  <h3> Notes: </h3>
   <img align = "right" src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
   <ul>
-    <li>  </li>
-    <li>  </li>
-    <li>  </li>
-    <li>  </li>
+    <li> Current cell color selection based on random UIColor chosen and persisted as cell attribute.  </li>
+    <li> Future implementation to allow user set specific color tags when creating new Todo List Categories. </li>
+    <li> Cells can be deleted using SwipeCellKit functionality by swiping left with a clickable delete icon appearing </li>
   </ul>
 </p>
 
