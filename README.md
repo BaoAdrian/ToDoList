@@ -58,11 +58,11 @@ Framework to provide the user with an elegant user interface.
   <ul>
     <li> Cell background color carried over from preselected UIColor and serves as the base for gradient UI customization </li>
     <li> Each additional cell added to tableView is used to calculate the percentage at which to darken cell for gradient effect </li>
-    ```
-    if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
-                cell.backgroundColor = color
-                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
-            }
+    ```swift
+      if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
+           cell.backgroundColor = color
+           cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+       }
     ```
     <li>  </li>
     <li>  </li>
