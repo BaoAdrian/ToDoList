@@ -26,8 +26,8 @@ Framework to provide the user with an elegant user interface.
 </br>
 
 <p>
-  <img src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
-  <img src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Unchecked" />
-  <img src = "Images/items_checked.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Checked" />
-  <img src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />
+  <img src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" vspace = "10" alt = "Homescreen - Filled" />
+  <img src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" vspace = "10" alt = "Items Page - Contrast" />
+  <img src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20" vspace = "10" alt = "Items Page - Unchecked" />
+  <img src = "Images/items_checked.png" width = "275" height = "450" hspace = "20" vspace = "10" alt = "Items Page - Checked" />
 </p>
