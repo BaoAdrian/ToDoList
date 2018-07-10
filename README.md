@@ -75,16 +75,6 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
 </p>
 
 
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-
 <h2> Todo Items List - Contrast Design </h2>
 <p>
   <img align = "right" src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />
