@@ -12,14 +12,17 @@ Framework to provide the user with an elegant user interface.
   <li> Thorough testing for deficiencies </li>
   <li> Add alerts in specified locations for any possible errors </li>
   <li> Add Settings option to individually customize user experience </li>
+  <li> Implement color tag customizations for categories & items </li>
 </ul>
 
 </br>
 
 <h1>Latest Adjustments:</h1>
 <ul>
-  <li>  </li>
-  <li>  </li>
+  <li> 07/02/2018 - Initial data persistence using UserDefaults </li>
+  <li> 07/07/2018 - Restructured to replace UserDefaults with CoreData data persistence functionality </li>
+  <li> 07/09/2018 - Converted to use the Realm Database for robust data persistence </li>
+  <li> 07/10/2018 - Added UIColor customizations included in Chameleon Framework </li>
 </ul>
 
 
