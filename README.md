@@ -13,6 +13,8 @@ Framework to provide the user with an elegant user interface.
   <li> Add alerts in specified locations for any possible errors </li>
   <li> Add Settings option to individually customize user experience </li>
   <li> Implement color tag customizations for categories & items </li>
+  <li> Add option within settings to adjust sorting method (Alphabetical, Date Created... etc) </li>
+  <li> Include optional quantity attribute for each item </li>
 </ul>
 
 </br>
@@ -32,8 +34,8 @@ Framework to provide the user with an elegant user interface.
 <p>
   <img align = "right" src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
   <ul>
-    <li> Current cell color selection based on random UIColor chosen and persisted as cell attribute.  </li>
-    <li> Future implementation to allow user set specific color tags when creating new Todo List Categories. </li>
+    <li> Current cell color selection based on random UIColor chosen and persisted as cell attribute  </li>
+    <li> Future implementation to allow user set specific color tags when creating new Todo List Categories </li>
     <li> Cells can be deleted using SwipeCellKit functionality by swiping left with a clickable delete icon appearing </li>
     <li> Add button allows user to create custom categories sorted from oldest to newest </li>
   </ul>
@@ -55,8 +57,7 @@ Framework to provide the user with an elegant user interface.
 <p>
   <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20"  alt = "Todo List - Items Page" />
   <ul>
-    <li> Basic add button functionality to add items to the list </li>
-    <li> Items automatically sorted alphabetically (feature to be added: allowing user to select sort method) </li>
+    <li> Add item functionality using add button which inserts item into list sorted alphabetically </li>
     <li> Searching items made simple with a responsive search bar component </li>
     <li> Individual cells carry a checked/unchecked status that updates UI if item is completed <li>
     <li> Cell background color carried over from preselected UIColor and serves as the base for gradient UI customization </li>
@@ -82,14 +83,12 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
 </br>
 </br>
 </br>
-</br>
-</br>
 
 <h2> Todo Items List - Contrast Design </h2>
 <p>
   <img align = "right" src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />
   <ul>
-    <li> Contrasting font colors and gradient background UIColors function for each individual cell </li>
+    <li> Contrasting font and gradient background colors function for each individual cell </li>
     <li> Chameleon Framework feature allows automatic detection of darker background colors, changing font to white when necessary </li>
     <li> Reference to methods listed below </li>
     https://github.com/ViccAlexander/Chameleon#contrasting-colors
