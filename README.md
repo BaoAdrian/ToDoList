@@ -59,9 +59,11 @@ Framework to provide the user with an elegant user interface.
   <ul>
     <li> Add item functionality using add button which inserts item into list sorted alphabetically </li>
     <li> Searching items made simple with a responsive search bar component </li>
-    <li> Individual cells carry a checked/unchecked status that updates UI if item is completed <li>
+    <li> Individual cells carry a checked/unchecked status that updates UI if item is completed </li>
     <li> Cell background color carried over from preselected UIColor and serves as the base for gradient UI customization </li>
     <li> Each additional cell added to tableView is used to calculate the percentage at which to darken cell for gradient effect </li>
+      
+  </ul>
     
 ```swift
 if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
@@ -70,7 +72,6 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
 }
 ```
     
-  </ul>
 </p>
 
 
