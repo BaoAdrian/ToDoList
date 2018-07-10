@@ -31,10 +31,13 @@ Framework to provide the user with an elegant user interface.
 <h2> Homescreen </h2>
 <p>
   <h3> Current Functionality </h3>
-  Current homescreen functions with a randomly generated UIColor with the assistance of the Chameleon Framework
   <img align = "right" src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
-  
-  
+  <ul>
+    <li>  </li>
+    <li>  </li>
+    <li>  </li>
+    <li>  </li>
+  </ul>
 </p>
 
 </br>
