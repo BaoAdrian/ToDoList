@@ -58,7 +58,6 @@ class TodoListViewController: SwipeTableViewController {
     
     
     
-    
     ////////////////////////////////////
     
     //MARK: NavBar Method
@@ -161,6 +160,7 @@ class TodoListViewController: SwipeTableViewController {
                     item.done = !item.done
                 }
             } catch {
+                //TODO: - Implement UI Alert
                 print("Error saving done status, \(error)")
             }
         }
@@ -208,6 +208,7 @@ class TodoListViewController: SwipeTableViewController {
                         currentCategory.items.append(newItem)
                     }
                 } catch {
+                    //TODO: - Implement UI Alert
                     print("Error saving new items, \(error)")
                 }
                 
@@ -246,6 +247,7 @@ class TodoListViewController: SwipeTableViewController {
                     realm.delete(item)
                 }
             } catch {
+                //TODO: - Implement UI Alert
                 print("Error deleting item \(error)")
             }
         }
