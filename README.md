@@ -36,6 +36,7 @@ Framework to provide the user with an elegant user interface.
     <li> Current cell color selection based on random UIColor chosen and persisted as cell attribute.  </li>
     <li> Future implementation to allow user set specific color tags when creating new Todo List Categories. </li>
     <li> Cells can be deleted using SwipeCellKit functionality by swiping left with a clickable delete icon appearing </li>
+    <li> Add button allows user to create custom categories sorted from oldest to newest </li>
   </ul>
 </p>
 
@@ -49,35 +50,26 @@ Framework to provide the user with an elegant user interface.
 </br>
 </br>
 </br>
+</br>
 
-<h2> Todo Items List - Gradient Design </h2>
+<h2> Todo Items List - Design & Functionality </h2>
 <p>
-  <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20"  alt = "Items Page - Checked" />
+  <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20"  alt = "Todo List - Items Page" />
   <ul>
-    <li>  </li>
-    <li>  </li>
+    <li> Cell background color carried over from preselected UIColor and serves as the base for gradient UI customization </li>
+    <li> Each additional cell added to tableView is used to calculate the percentage at which to darken cell for gradient effect </li>
+    ```
+    if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+            }
+    ```
     <li>  </li>
     <li>  </li>
   </ul>
 </p>
 
 
-</br>
-
-<p> 
-  <img align = "right" src = "Images/items_checked.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Unchecked" />
-  <ul>
-    <li>  </li>
-    <li>  </li>
-    <li>  </li>
-    <li>  </li>
-  </ul>
-</p>
-
-</br>
-</br>
-</br>
-</br>
 </br>
 </br>
 </br>
