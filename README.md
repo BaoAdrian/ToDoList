@@ -89,9 +89,10 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
 <p>
   <img align = "right" src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />
   <ul>
-    <li>  </li>
+    <li> Contrasting font colors and gradient background UIColors function for each individual cell </li>
     <li> Chameleon Framework feature allows automatic detection of darker background colors, changing font to white when necessary </li>
-    [a relative link]https://github.com/ViccAlexander/Chameleon#contrasting-colors
+    <li> Reference to methods listed below </li>
+    https://github.com/ViccAlexander/Chameleon#contrasting-colors
   </ul>
 </p>
 
