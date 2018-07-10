@@ -46,6 +46,9 @@ Framework to provide the user with an elegant user interface.
 </br>
 </br>
 </br>
+</br>
+</br>
+</br>
 
 <h2> Todo Items List - Gradient Design </h2>
 <p>
@@ -71,6 +74,13 @@ Framework to provide the user with an elegant user interface.
   </ul>
 </p>
 
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 </br>
 </br>
 </br>
