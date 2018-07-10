@@ -30,7 +30,6 @@ Framework to provide the user with an elegant user interface.
 
 <h2> Homescreen - Categories </h2>
 <p>
-  <h3> Notes: </h3>
   <img align = "right" src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
   <ul>
     <li> Current cell color selection based on random UIColor chosen and persisted as cell attribute.  </li>
@@ -56,8 +55,10 @@ Framework to provide the user with an elegant user interface.
 <p>
   <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20"  alt = "Todo List - Items Page" />
   <ul>
-    <li>  </li>
-    <li>  </li>
+    <li> Basic add button functionality to add items to the list </li>
+    <li> Items automatically sorted alphabetically (feature to be added: allowing user to select sort method) </li>
+    <li> Searching items made simple with a responsive search bar component </li>
+    <li> Individual cells carry a checked/unchecked status that updates UI if item is completed <li>
     <li> Cell background color carried over from preselected UIColor and serves as the base for gradient UI customization </li>
     <li> Each additional cell added to tableView is used to calculate the percentage at which to darken cell for gradient effect </li>
     
@@ -67,7 +68,6 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
   cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
 }
 ```
-    
     
   </ul>
 </p>
@@ -90,9 +90,10 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
   <img align = "right" src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />
   <ul>
     <li>  </li>
-    <li>  </li>
-    <li>  </li>
-    <li>  </li>
+    <li> Chameleon Framework feature allows automatic detection of darker background colors, changing font to white when necessary </li>
+    
+    [a relative link]https://github.com/ViccAlexander/Chameleon#contrasting-colors
+    
   </ul>
 </p>
 
