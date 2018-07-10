@@ -7,15 +7,16 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 
 
 // Inheriting UITableViewController takes care of delegate and data source responsibilities
 class TodoListViewController: UITableViewController {
     
+    var todoItems : Results<Item>?
     
-    var itemArray = [Item]()
+    let realm = try! Realm()
     
     var selectedCategory : Category? {
         didSet {
@@ -24,13 +25,6 @@ class TodoListViewController: UITableViewController {
         }
     }
     
-    // CREATE operation of CRUD
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    // An interface to the user’s defaults database, where you store key-value pairs persistently across launches of your app
-    // let defaults = UserDefaults.standard
-    
-    
     
     override func viewDidLoad() {
         
@@ -38,12 +32,6 @@ class TodoListViewController: UITableViewController {
         
         // Prints data path where data is being stored
         // print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        // Data path used to test current status before/after modifications
-        // print(dataFilePath)
-        
-        
-        loadItems()
         
         
     }
@@ -62,7 +50,7 @@ class TodoListViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        return todoItems?.count ?? 1
     }
     
     
@@ -70,17 +58,28 @@ class TodoListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
-        // Set constant to simplify code
-        let item = itemArray[indexPath.row]
-        
-        cell.textLabel?.text = item.title
-        
-        // Ternary Operator (replaces if-else statement): value = condition ? valueIfTrue : valueIfFalse
-        cell.accessoryType = item.done == true ? .checkmark : .none
+        if let item = todoItems?[indexPath.row] {
+            
+            cell.textLabel?.text = item.title
+            
+            // Ternary Operator (replaces if-else statement): value = condition ? valueIfTrue : valueIfFalse
+            cell.accessoryType = item.done == true ? .checkmark : .none
+            
+        } else {
+            
+            // Nil or fails
+            cell.textLabel?.text = "No Items Added"
+            
+        }
         
         return cell
         
     }
+    
+    
+    
+    
+    
     
     
     
@@ -96,25 +95,32 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Test
-        // print(itemArray[indexPath.row])
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    
+                    // Deletes items rather than 'checkmarking'
+                    // realm.delete(item)
+                    
+                    item.done = !item.done
+                }
+            } catch {
+                print("Error saving done status, \(error)")
+            }
+        }
         
-        
-        // Deleting items from database - DELETE operation of CRUD
-        // context.delete(itemArray[indexPath.row])
-        // itemArray.remove(at: indexPath.row)
-        
-        
-        // Check to see if items have been 'checked' or DONE, if not, implements the opposite of current status
-        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
-        
-        saveItems()
+        tableView.reloadData()
         
         // Adds flash animation to any selected cells
         tableView.deselectRow(at: indexPath, animated: true)
         
         
     }
+    
+    
+    
+    
+    
     
     
     
@@ -136,17 +142,23 @@ class TodoListViewController: UITableViewController {
         /* What happens when user clicks add button */
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
-            // Add text to array
-            let newItem = Item(context: self.context)
-            newItem.title = textField.text!
-            newItem.done = false
-            newItem.parentCategory = self.selectedCategory
-            self.itemArray.append(newItem)
+            if let currentCategory = self.selectedCategory {
+                
+                do {
+                    try self.realm.write {
+                        let newItem = Item()
+                        newItem.title = textField.text!
+                        newItem.dateCreated = Date()
+                        currentCategory.items.append(newItem)
+                    }
+                } catch {
+                    print("Error saving new items, \(error)")
+                }
+                
+            }
             
-            self.saveItems()
+            self.tableView.reloadData()
             
-            // print("Success, Add Item Pressed")
-            // print(textField.text)
         }
         
         alert.addTextField { (alertTextField) in
@@ -162,47 +174,21 @@ class TodoListViewController: UITableViewController {
     }
     
     
-    // Methods that saves and updates/reloads the current status of each item in list (i.e. title and done) - UPDATE operation of CRUD
-    func saveItems() {
-        
-        
-        // Commit and save changes made to data from context into the Database
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context, \(error)")
-        }
-        
-        tableView.reloadData()
-        
-    }
-    
-    
     // Method to access and load saved data - READ operation of CRUD
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
+    func loadItems() {
 
-        // All items we retrieve must have the NAME attribute to match the parentCategory
-        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-        
-        // Optional binding to ensure that if no predicate is passed, still completes loading of items
-        if let additionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
-        } else {
-            request.predicate = categoryPredicate
-        }
-        
-        do {
-            // fetch results from database and save into array
-            itemArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-        
+        todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
+
         tableView.reloadData()
-        
+
     }
     
 }
+
+
+
+
+
 
 
 
@@ -217,62 +203,39 @@ class TodoListViewController: UITableViewController {
 
 // Modularize program using extension of ToDoListViewController
 extension TodoListViewController: UISearchBarDelegate {
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+
+        // Filter todo list items
+        todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
         
-        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        
-        // Filter for query - search database for any title that contains param (searchBar.text)
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!) // [cd] removes case & diacretic sensitivity
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-        loadItems(with: request, predicate: predicate)
-        
+        tableView.reloadData()
+
     }
-    
-    
-    
+
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+
         if searchBar.text?.count == 0 {
-            
+
             // Triggered when user clears search bar after quering item
             loadItems()
-            
+
             // Removes Keyboard from the screen as search bar is no longer being edited
             DispatchQueue.main.async { // Requests main thread to process UI Request
                 searchBar.resignFirstResponder()
             }
-            
+
         }
-        
+
     }
-    
-    
-    
+
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////
 
 //MARK: END
 
-
+//////////////////////////////////////
