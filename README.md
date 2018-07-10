@@ -78,7 +78,6 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
 </br>
 </br>
 </br>
-</br>
 
 <h2> Todo Items List - Contrast Design </h2>
 <p>
