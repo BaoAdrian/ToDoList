@@ -28,9 +28,10 @@ Framework to provide the user with an elegant user interface.
 
 </br>
 
-<h3> Homescreen </h3>
+<h2> Homescreen </h2>
 <p>
   <img src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
+  <h3> Current Functionality </h3>
 </p>
 
 <p>
