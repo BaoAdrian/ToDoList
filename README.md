@@ -3,6 +3,10 @@ Todo List Application developed using Swift 4 in Xcode 9.4.1. Data persistance a
 covering each operation of CRUD. Implemented gradient and contrasting UIColor customizations utilizing the Chameleon 
 Framework to provide the user with an elegant user interface.
 
+</br>
+
+Completed as part of an assignment for a course using database operations (CRUD) with the Realm Database as well as front-end UI enhancements with the assistance of the Chameleon Framework.
+
 
 <br>
 
