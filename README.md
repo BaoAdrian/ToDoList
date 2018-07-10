@@ -91,9 +91,7 @@ if let color = UIColor(hexString: selectedCategory!.bgColor)?.darken(byPercentag
   <ul>
     <li>  </li>
     <li> Chameleon Framework feature allows automatic detection of darker background colors, changing font to white when necessary </li>
-    
     [a relative link]https://github.com/ViccAlexander/Chameleon#contrasting-colors
-    
   </ul>
 </p>
 
