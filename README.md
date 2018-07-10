@@ -28,7 +28,7 @@ Framework to provide the user with an elegant user interface.
 
 </br>
 
-<h2> Homescreen </h2>
+<h2> Homescreen - Categories </h2>
 <p>
   <h3> Notes: </h3>
   <img align = "right" src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
@@ -41,20 +41,9 @@ Framework to provide the user with an elegant user interface.
 
 </br>
 
+<h2> Todo Items List - Gradient Design </h2>
 <p>
-  <img align = "right" src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />
-  <ul>
-    <li>  </li>
-    <li>  </li>
-    <li>  </li>
-    <li>  </li>
-  </ul>
-</p>
-
-</br>
-
-<p>
-  <img align = "right" src = "Images/items_checked.png" width = "275" height = "450" hspace = "20"  alt = "Items Page - Checked" />
+  <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20"  alt = "Items Page - Checked" />
   <ul>
     <li>  </li>
     <li>  </li>
@@ -67,7 +56,20 @@ Framework to provide the user with an elegant user interface.
 </br>
 
 <p> 
-  <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Unchecked" />
+  <img align = "right" src = "Images/items_checked.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Unchecked" />
+  <ul>
+    <li>  </li>
+    <li>  </li>
+    <li>  </li>
+    <li>  </li>
+  </ul>
+</p>
+
+</br>
+
+<h2> Todo Items List - Contrast Design </h2>
+<p>
+  <img align = "right" src = "Images/items_contrast.png" width = "275" height = "450" hspace = "20" alt = "Items Page - Contrast" />
   <ul>
     <li>  </li>
     <li>  </li>
