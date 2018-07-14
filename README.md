@@ -39,7 +39,6 @@ Completed as part of an assignment for a course using database operations (CRUD)
   <img align = "right" src = "Images/homescreen_filled.png" width = "275" height = "450" hspace = "20" alt = "Homescreen - Filled" />
   <ul>
     <li> Current cell color selection based on random UIColor chosen and persisted as cell attribute  </li>
-    <li> Future implementation to allow user set specific color tags when creating new Todo List Categories </li>
     <li> Cells can be deleted using SwipeCellKit functionality by swiping left with a clickable delete icon appearing </li>
     <li> Add button allows user to create custom categories sorted from oldest to newest </li>
   </ul>
@@ -57,7 +56,7 @@ Completed as part of an assignment for a course using database operations (CRUD)
 </br>
 </br>
 
-<h2> Todo Items List - Functionality & Desgin </h2>
+<h2> Todo Items List - Functionality & Design </h2>
 <p>
   <img align = "right" src = "Images/items_unchecked.png" width = "275" height = "450" hspace = "20"  alt = "Todo List - Items Page" />
   <ul>
