@@ -26,9 +26,9 @@ Completed as part of an assignment for a course using database operations (CRUD)
 <h1>Latest Adjustments:</h1>
 <ul>
   <li> 07/10/2018 - Added UIColor customizations included in Chameleon Framework </li>
-  <li> 07/09/2018 - Converted to use the Realm Database for robust data persistence </li>
+  <li> 07/09/2018 - Converted data model to use the Realm Database for robust data persistence capabilities </li>
   <li> 07/07/2018 - Restructured to replace UserDefaults with CoreData data persistence functionality </li>
-  <li> 07/02/2018 - Initial data persistence using UserDefaults </li>
+  <li> 07/02/2018 - Initial data model created using data persistence with UserDefaults </li>
 </ul>
 
 
