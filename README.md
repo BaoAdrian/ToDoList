@@ -7,6 +7,7 @@ Framework to provide the user with an elegant user interface.
 
 Completed as part of an assignment for a course using database operations (CRUD) with the Realm Database as well as front-end UI enhancements with the assistance of the Chameleon Framework.
 
+
 <br>
 
 
